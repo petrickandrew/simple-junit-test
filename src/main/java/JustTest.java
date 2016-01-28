@@ -1,5 +1,5 @@
 /**
- * Created by max on 06.08.15.
+ * Run simple selenium tests in Chrome browser
  */
 
     import org.junit.*;
@@ -13,7 +13,7 @@
     import java.util.Map;
 
 public class JustTest {
-    String chromedriver = "/home/max/chromedriver/chromedriver";
+    String chromePath = "/drivers/chromedriver";
     WebDriver driver;
 
     @Before
@@ -39,7 +39,11 @@ public class JustTest {
     }
 
     private void setChromeEnvVariable() {
-        System.setProperty("webdriver.chrome.driver", chromedriver);
+        System.setProperty("webdriver.chrome.driver", getChromePath());
+    }
+
+    private String getChromePath(){
+        return System.getProperty("user.dir") + chromePath;
     }
 
     private DesiredCapabilities getChromeCapabilities() {
@@ -56,7 +60,8 @@ public class JustTest {
 
     private Map<String, String> getMobileEmulation() {
         Map<String, String> mobileEmulation = new HashMap<String, String>();
-        mobileEmulation.put("deviceName", "Google Nexus 7");
+        mobileEmulation.put("deviceName", "Google Nexus 10");
         return mobileEmulation;
     }
+
 }
