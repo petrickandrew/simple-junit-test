@@ -24,18 +24,26 @@ public class JustTest {
 
     @Test
     public void testGoogleSearch() throws InterruptedException {
-        driver.get("http://www.google.com/xhtml");
+        openUrl("http://www.google.com/xhtml");
         Thread.sleep(5000);  // Let the user actually see something!
 
-        WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.sendKeys("ChromeDriver");
-        searchBox.submit();
-        Thread.sleep(15000);  // Let the user actually see something
+        searchFor("ChromeDriver");
+        Thread.sleep(5000);  // Let the user actually see something
     }
 
     @After
     public void quitDriver() {
         driver.quit();
+    }
+
+    private void openUrl(String url) {
+        driver.get(url);
+    }
+
+    private void searchFor(String text){
+        WebElement searchBox = driver.findElement(By.name("q"));
+        searchBox.sendKeys(text);
+        searchBox.submit();
     }
 
     private void setChromeEnvVariable() {
