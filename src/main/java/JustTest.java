@@ -11,6 +11,8 @@
     import org.openqa.selenium.remote.DesiredCapabilities;
     import java.util.HashMap;
     import java.util.Map;
+    
+    //java -jar /usr/share/jenkins/jenkins.war
 
 public class JustTest {
     String chromePath = "/drivers/chromedriver";
